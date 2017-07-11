@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+
+<h1><%= dept %> Department </h1><br>
+<h2>Choose questions to delete</h2>
+<form action="/admin/<%=dept%>" method="post">
+    <%
+    for(var i = 0;i < parseInt(count);i++)
+    {
+    %>
+
+    <input type="checkbox" name="question"  value="<%=questions[i]%>"/>
+    <%= questions[i] %><br>
+    <%
+    }
+    %>
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>

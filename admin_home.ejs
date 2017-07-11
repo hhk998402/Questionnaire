@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+
+</head>
+<body>
+<form action="/newpage" method="get">
+<button type="submit" name="back" value="Back">Back</button><br>
+</form>
+
+
+<p onclick="add()"><a><u>ADD QUESTION</u></a></p>
+
+
+<a href="/admin/questionlist/<%=dept%>" name="ondelete"> <p><u>DELETE QUESTION</u></p></a>
+
+<!--Add Question-->
+<form action="/admin/<%=dept%>" method="get">
+    <p id="add_question" style="display: none">Add Question <br>
+        <textarea placeholder="Enter Question here..." rows="4" cols="50" name="question"></textarea><br>
+
+        <label for="option1">Option 1 :
+            <input type="text" name="option1">
+        </label><br><br>
+        <label for="option2">Option 2 :
+            <input type="text" name="option2">
+        </label><br><br>
+        <label for="option3">Option 3 :
+            <input type="text" name="option3">
+        </label><br><br>
+        <label for="option4">Option 4 :
+            <input type="text" name="option4">
+        </label><br><br>
+        <label for="answer">Answer &nbsp;&nbsp;:
+            <input type="text" name="answer" placeholder="a,b,c,d">
+        </label><br><br>
+
+        <button type="submit" onclick="display()">Add Question</button>
+    </p>
+</form>
+
+
+
+<p id="success_message"></p>
+
+<script>
+    function display() {
+        document.getElementById("success_message").innerHTML = "Action Successful";
+        document.getElementById("success_message").style.display = 'block';
+
+        // window.location = "https://www.google.co.in";
+    }
+    function add() {
+        document.getElementById("add_question").style.display = 'block';
+    }
+
+    function search() {
+        if(document.getElementById("search").value === "")
+        {
+            document.getElementById("searchNotify").style.display = "block";
+            document.getElementById("searchNotify").innerHTML = "Search is Empty";
+            document.getElementById("tableMain").style.display = "block";
+            document.getElementById("tableSearch").style.display = "none";
+        }
+
+        else
+        {
+            document.getElementById("tableMain").style.display = "none";
+            document.getElementById("tableSearch").style.display = "block";
+            document.getElementById("searchNotify").style.display = "none";
+        }
+
+    }
+
+</script>
+
+<p id="demo"></p>
+<p id="demo1"></p>
+
+<h3>List Of the Attendees</h3>
+
+<form action="/admin/<%=dept%>" method="get">
+<input type="search" id="search" placeholder="Search for something.." name="search">
+<button type="submit" >Search</button><br>
+</form>
+
+<p id="searchNotify"></p>
+
+<%
+ if(searchCount==0){
+
+ %>
+ <table border="1" id="tableMain">
+         <tr>
+         <td><b>Date</b></td>
+         <td><b>Name</b></td>
+         <td><b>Mobile</b></td>
+         <td><b>Email</b></td>
+         <td><b>Score</b></td>
+
+         </tr>
+<%
+for(var i=0;i<attendeeCount;i++){
+
+%>
+<tr>
+    <td><%=aDate[i]%></td>
+    <td><%=aName[i]%></td>
+    <td><%=aMobile[i]%></td>
+    <td><%=aEmail[i]%></td>
+    <td><a href="/admin/answerlist/<%=dept%>/<%=aMobile[i]%>"  target="_blank"> <p><u><%=aRes[i]%></u></p></a></td>
+</tr>
+<%
+}
+%>
+</table>
+<%
+}
+
+ else {
+%>
+<table border="1" id="tableSearch" >
+        <tr>
+        <td><b>Date</b></td>
+        <td><b>Name</b></td>
+        <td><b>Mobile</b></td>
+        <td><b>Email</b></td>
+        <td><b>Score</b></td>
+        </tr>
+
+<%
+for(i=0;i<searchCount;i++){
+
+%>
+<tr>
+    <td><%=sDate[i]%></td>
+    <td><%=sName[i]%></td>
+    <td><%=sMobile[i]%></td>
+    <td><%=sEmail[i]%></td>
+    <td><a href="/admin/answerlist/<%=dept%>/<%=sMobile[i]%>"  target="_blank"> <p><u><%=sRes[i]%></u></p></a></td>
+</tr>
+<%
+}
+%>
+</table>
+<%
+ }
+
+%>
+
+</body>
+</html>
+
+<!--
+create table department_list (depno int NOT NULL AUTO_INCREMENT,depname varchar(30),primary key (depno));
+
+insert into department_list(depname) values ('Accounts Department');
+
+create table nursing_question_list(qno int NOT NULL AUTO_INCREMENT , question varchar(255) ,
+                                   option1 varchar(50), option2 varchar(50), option3 varchar(50) ,
+                                    option4 varchar(40) , answer varchar(1),primary key(qno));
+
+create table nursing (date datetime DEFAULT CURRENT_TIMESTAMP , name varchar(30) , mobile varchar(10) , email varchar(30) , questionid varchar(255) , result int ,primary key(date));
+
+insert into nursing (name,mobile,email,questionid,result) values ('reddy','8861030755','reddy@gmail.com','{"77":"a","102":"c"}',15);
+/*function getData(){
+            //Getting count form .js
+
+
+
+            //Getting department from .js
+
+
+            var dept = dep.split(",");
+
+
+
+            var select = document.getElementById("departmentAdd");
+            for(var i=0 ;i<parseInt(count);i++){
+                var option =document.createElement('option');
+                option.text = option.value = dept[i];
+                select.add(option,0);
+            }
+        }
+*/
+
+-->

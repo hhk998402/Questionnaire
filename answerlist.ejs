@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+    <b>Name        : </b><%= Name%><br>
+    <b>Mobile      : </b><%= mobile%><br>
+    <b>Email       : </b><%= Email%><br>
+    <b>Total Marks : </b><%= Marks%><br>
+    <table border="1">
+        <tr>
+            <td><b>Question</b></td>
+            <td><b>Answer</b></td>
+            <td><b>Correct Answer</b></td>
+        </tr>
+        <%
+        for(var i=0;i<20;i++){
+
+        %>
+        <tr>
+            <td><%=questions[i]%></td>
+            <td><%=aAnswer[i]%></td>
+            <td><%=cAnswers[i]%></td>
+        </tr>
+        <%
+        }
+        %>
+    </table>
+
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script>
+
+    </script>
+</head>
+<body>
+<%
+    console.log(dep);
+    for(var i=0;i<parseInt(count);i++)
+    {
+        console.log(dep[i]);
+%>
+    <form action="/admin/<%= dep[i] %>" method="get">
+        <input type="submit" value="<%= dep[i]%>"/>
+    </form><br>
+
+<%
+    }
+%>
+
+
+
+
+<p id="demo"></p>
+</body>
+</html>
