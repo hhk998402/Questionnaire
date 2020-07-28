@@ -1,0 +1,33 @@
+{
+  "name": "msrmh-questionnaire",
+  "version": "1.0.0",
+  "description": "Questionnaire application to be used my MS Ramaiah Memorial Hospital",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hhk998402/Questionnaire.git"
+  },
+  "keywords": [
+    "MySQL",
+    "Express"
+  ],
+  "author": "Hemant H Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hhk998402/Questionnaire/issues"
+  },
+  "homepage": "https://github.com/hhk998402/Questionnaire#readme"
+}
